@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  ros_noetic:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ros_noetic_container
+    volumes:
+      # Mount your source code directory
+      - ./sensors:/ros_ws/src
+      # Optional: X11 socket for GUI applications
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      # Optional: Environment variables for GUI support
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    network_mode: "host"
+    # Keep the container running
+    tty: true
+    stdin_open: true
+    # Privileged mode may be needed for some hardware access
+    privileged: true
+    # Restart policy
+    restart: unless-stopped
+    # Expose Jupyter Notebook port
+    ports:
+      - "8888:8888"
