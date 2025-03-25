@@ -22,7 +22,7 @@ services:
     # Privileged mode may be needed for some hardware access
     privileged: true
     # Restart policy
-    restart: unless-stopped
+    restart: no
     # Expose Jupyter Notebook port
     ports:
       - "8888:8888"

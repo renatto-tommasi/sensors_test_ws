@@ -12,10 +12,12 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     python3-catkin-tools \
     tmux \
+    python3-opencv \
+    python3-matplotlib \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Jupyter Notebook
-RUN pip3 install jupyter notebook
+# Install Jupyter Notebook and other Python dependencies
+RUN pip3 install jupyter notebook numpy opencv-python matplotlib ipywidgets
 
 # Create a catkin workspace
 WORKDIR /ros_ws
@@ -38,7 +40,8 @@ RUN echo "set -g mouse on" > ~/.tmux.conf && \
 COPY ./ros_entrypoint.sh /
 RUN chmod +x /ros_entrypoint.sh
 ENTRYPOINT ["/ros_entrypoint.sh"]
-CMD ["bash"]
 
-# Exposed port for Jupyter Lab
+# Exposed port for Jupyter Notebook
 EXPOSE 8888
+
+CMD [ "jupyter", "notebook", "--ip=0.0.0.0", "--allow-root", "--no-browser", "--NotebookApp.token=''", "--NotebookApp.password=''"]
