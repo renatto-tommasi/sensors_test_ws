@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     git \
     build-essential \
     python3-catkin-tools \
+    tmux \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Jupyter Notebook
@@ -28,6 +29,10 @@ RUN source /opt/ros/noetic/setup.bash && \
 
 # Add source command to bashrc
 RUN echo "source /ros_ws/devel/setup.bash" >> ~/.bashrc
+
+# Add basic tmux configuration
+RUN echo "set -g mouse on" > ~/.tmux.conf && \
+    echo "set -g history-limit 10000" >> ~/.tmux.conf
 
 # Set up entrypoint
 COPY ./ros_entrypoint.sh /
