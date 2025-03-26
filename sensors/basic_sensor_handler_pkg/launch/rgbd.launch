@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+  
+  <!-- Launch the RealSense camera handler node -->
+  <node name="realsense_handler" pkg="basic_sensor_handler_pkg" type="rgbd_camera.py" output="screen"/>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find basic_sensor_handler_pkg)/rviz/lidar_config.rviz" />
+
+</launch>

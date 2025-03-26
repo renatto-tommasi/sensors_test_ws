@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <node name="fisheye_camera_node" pkg="basic_sensor_handler_pkg" type="fisheye_cameras.py" output="screen"/>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find basic_sensor_handler_pkg)/rviz/fisheye_config.rviz" />
+
+</launch>

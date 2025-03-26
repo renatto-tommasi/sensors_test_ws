@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Arguments that can be passed via command line -->
+  <arg name="point_cloud_topic" default="/velodyne_points" />
+  
+  <!-- Launch the LiDAR Processor Node -->
+  <node name="lidar_processor" pkg="basic_sensor_handler_pkg" type="3d_lidar.py" output="screen">
+    <param name="point_cloud_topic" value="$(arg point_cloud_topic)" />
+  </node>
+  
+  <!-- Launch RViz for visualization -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find basic_sensor_handler_pkg)/rviz/lidar_config.rviz" />
+</launch>
