@@ -52,6 +52,11 @@ You can modify the `docker-compose.yml` file to adjust:
 
 The workspace directory is mounted into the container, allowing you to edit files on your host machine while running code inside the container.
 
+## Rosbags
+
+You can download Rosbags of all the sensors on this drive directory
+[Drive](https://drive.google.com/drive/folders/18kB7NoN3E0uIFjMb1ohy4xXZSLyAba66)
+
 ## Troubleshooting
 
 If you encounter any issues with the build process:
